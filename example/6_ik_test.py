@@ -55,10 +55,9 @@ def print_result(result, target_pos, target_rot, joint_names) -> None:
         euler_in = np.degrees(pin.rpy.matrixToRpy(target_rot))
         print(f"  目标末端姿态   : [{euler_in[0]:+.2f}, {euler_in[1]:+.2f}, {euler_in[2]:+.2f}] deg")
     print()
-    print(f"  收敛状态  : {'是' if result.converged else '否'}")
+    print(f"  收敛状态  : {'是' if result.success else '否'}")
     print(f"  迭代次数 : {result.iterations}")
-    print(f"  位置误差  : {result.residual_trans:.2e} m")
-    print(f"  姿态误差  : {result.residual_rot:.2e} rad")
+    print(f"  误差      : {result.error:.2e}")
     print()
     print(f"  关节角度 (度):")
     for name, deg, rad in zip(joint_names, np.degrees(result.q), result.q):
@@ -104,12 +103,9 @@ def main() -> None:
 
     q_init = np.zeros(model.nq)
     result = compute_ik(
-        model=model,
         q_init=q_init,
-        target_position=target_pos,
-        target_rotation=target_rot,
-        max_iter=2000,
-        damping=0.01,
+        target_pos=target_pos,
+        target_rot=target_rot,
     )
 
     print_result(result, target_pos, target_rot, joint_names)

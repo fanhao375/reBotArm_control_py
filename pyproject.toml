@@ -3,7 +3,7 @@ name = "rebotarm-control-py"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = "==3.10.*"
+requires-python = ">=3.10"
 dependencies = [
     "meshcat>=0.3.2",
     "pin>=3.9.0",

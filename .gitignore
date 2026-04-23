@@ -1,16 +1,17 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
 
-# # Python virtual environment
-# .venv/
+# Python virtual environments
+.venv/
+venv/
 
-# # VS Code
-# .vscode/
+# VS Code
+.vscode/
 
-# # Python version
-# .python-version
+# Python version
+.python-version
 
-# # UV lock file
-# uv.lock
-
-# # pyproject.toml (local overrides)
-# pyproject.toml
+# UV lock file
+uv.lock
 
