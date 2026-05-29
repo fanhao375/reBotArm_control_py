@@ -80,8 +80,9 @@ def get_joint_limits(model: pin.Model) -> List[Tuple[float, float]]:
     limits = []
     for name in names:
         joint_id = model.getJointId(name)
-        lo = float(model.lowerPositionLimit[joint_id])
-        hi = float(model.upperPositionLimit[joint_id])
+        iq = model.joints[joint_id].idx_q
+        lo = float(model.lowerPositionLimit[iq])
+        hi = float(model.upperPositionLimit[iq])
         if np.isinf(lo) and np.isinf(hi):
             limits.append((-np.inf, np.inf))
         else:
